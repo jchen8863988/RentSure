@@ -64,7 +64,7 @@
   <h2>3. Summary (plain language)</h2>
   <ul>
     <li><strong>Local‑first:</strong> Most information you enter is stored <strong>on your device</strong> (e.g. local app storage).</li>
-    <li><strong>Optional server:</strong> If you configure an API base URL in the App, limited data may be sent to <strong>that server you choose</strong> (e.g. listing URLs for preview, or subscription verification payloads).</li>
+    <li><strong>Optional network features:</strong> When you use features like <strong>fetch from link</strong> (listing preview) or <strong>subscription verification</strong>, limited data may be sent to a <strong>developer‑operated</strong> service endpoint (for example: the listing URL you paste, or subscription verification payloads).</li>
     <li><strong>Payments:</strong> In‑App Purchases on Apple platforms are handled by <strong>Apple</strong> (StoreKit). We do not receive your full card number.</li>
     <li><strong>Your controls:</strong> The App offers export and deletion of on‑device app data where implemented; see Section 10.</li>
   </ul>
@@ -126,7 +126,7 @@
   <h3>5.2 Listings &amp; imported content (local; optional network)</h3>
   <ul>
     <li>Listing text, numbers, URLs, and metadata you import or save.</li>
-    <li>If you use “fetch from link” / preview features, the App may send a <strong>listing URL</strong> to your <strong>configured API base URL</strong> for parsing; a local fetch fallback may occur.</li>
+    <li>If you use “fetch from link” / preview features, the App may send a <strong>listing URL</strong> to a <strong>developer‑operated</strong> service endpoint for parsing; a local fetch fallback may occur.</li>
     <li><strong>Purpose:</strong> screening, templates, reliability of preview.</li>
   </ul>
 
@@ -139,7 +139,7 @@
   <h3>5.4 Subscriptions &amp; verification (Apple; optional backend)</h3>
   <ul>
     <li>Apple processes payment and related account data per Apple’s terms.</li>
-    <li>The App may send <strong>transaction verification</strong> data (e.g. signed JWS, transaction IDs) to <strong>your configured backend</strong> if you enable that path.</li>
+    <li>The App may send <strong>transaction verification</strong> data (e.g. signed JWS, transaction IDs) to a <strong>developer‑operated</strong> backend if you enable that path.</li>
     <li><strong>Purpose:</strong> unlock paid features, validate entitlement, reduce fraud.</li>
     <li><strong>Manage / cancel subscriptions (Apple):</strong> <a href="https://support.apple.com/en-us/HT202039">https://support.apple.com/en-us/HT202039</a> (open Settings → Apple ID → Subscriptions on device, or use the support article for your region).</li>
   </ul>
@@ -158,8 +158,17 @@
 
   <h3>5.7 Technical data</h3>
   <ul>
-    <li>OS‑level permissions, network requests you trigger, configured API URL stored locally.</li>
+    <li>OS‑level permissions, network requests you trigger, and other technical signals required to operate the App.</li>
     <li><strong>Purpose:</strong> operate the App securely and as configured.</li>
+  </ul>
+
+  <h3>5.8 Photos, OCR, Share Extension, and clipboard (on device; user‑initiated)</h3>
+  <ul>
+    <li><strong>Photos permission (optional):</strong> If you tap the OCR / “recognize text from screenshot” feature, the App will request access to your photo library to let you <strong>select</strong> a screenshot.</li>
+    <li><strong>On‑device OCR:</strong> Text recognition is performed <strong>on your device</strong> using iOS system capabilities. The App does <strong>not</strong> upload your screenshot image to the developer as part of OCR in the current design.</li>
+    <li><strong>Share Extension (optional):</strong> If you share a URL or text from Safari or another app to RentSure, the Share Extension processes only the content you choose to share (for example: the page URL or selected text) and opens RentSure to prefill the Import screen.</li>
+    <li><strong>Clipboard (optional):</strong> The App reads the clipboard only when you tap a “Paste” button (for example: Paste URL / Paste description) to fill an input field. It does not continuously read your clipboard.</li>
+    <li><strong>Data export:</strong> If you export your data, the App packages your on‑device data into a JSON file and shows the iOS system share sheet so you can save it to Files or share it. The App does not automatically send the exported file to the developer.</li>
   </ul>
 
   <h2>6. Legal bases (EEA / UK / similar)</h2>
@@ -168,19 +177,19 @@
   <h2>7. Sharing &amp; recipients</h2>
   <ul>
     <li><strong>Apple Inc.</strong> and affiliates: App Store distribution, In‑App Purchase, StoreKit, and related infrastructure.</li>
-    <li><strong>Server you configure:</strong> you control that endpoint; its operator (you or a third party) is responsible for compliance there.</li>
+    <li><strong>Developer‑operated services (if enabled):</strong> if a build uses a backend for listing preview or subscription verification, it is operated by the developer and should be accessed over HTTPS.</li>
     <li>We do <strong>not sell</strong> personal information (including as “sale” is defined under California law for covered businesses).</li>
     <li>We do not disclose personal data to data brokers for tracking as described in Section 2.</li>
   </ul>
 
   <h2>8. International transfers</h2>
-  <p>Apple and any server you configure may process data in multiple countries. Apple provides information about international transfers in its privacy materials. If you operate a backend in a specific country, users should be aware that submitting data to that URL may transfer data to that jurisdiction.</p>
+  <p>Apple and any developer‑operated services (if enabled) may process data in multiple countries. Apple provides information about international transfers in its privacy materials. If the developer operates a backend in a specific country, users should be aware that network features may transfer limited data (such as listing URLs or verification payloads) to that jurisdiction.</p>
 
   <h2>9. Retention</h2>
   <ul>
     <li><strong>On‑device data:</strong> retained until you delete it in the App, clear app data, or uninstall the App, subject to device backups you control.</li>
     <li><strong>Email support:</strong> correspondence may be retained for a reasonable period to resolve issues and meet legal obligations.</li>
-    <li><strong>Configured server:</strong> retention is governed by that server’s operator and settings.</li>
+    <li><strong>Developer‑operated services (if enabled):</strong> retention is governed by the developer’s backend configuration and applicable law.</li>
   </ul>
 
   <h2>10. Your rights &amp; controls</h2>
